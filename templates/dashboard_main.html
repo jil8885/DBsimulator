@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World!</title>
+  <link rel="stylesheet" type="text/css" href="../css/dashboard_main.css">
+  <script src="database.js"></script>
+  <script src="renderer.js"></script>
+  <style type="text/css">
+    #fir{
+      width:100px;
+      height: 100px;
+    }
+
+    #Floor1
+    {
+      width:1000px;
+      height:120px;
+      border: 2px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      margin: auto;
+      margin-top: 30px;
+      margin-bottom: 20px;
+      text-align: center;
+
+    }
+
+    #Floor2
+    {
+      width:1000px;
+      height:120px;
+      border: 2px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      margin: auto;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    #Floor3
+    {
+      width:1000px;
+      height:120px;
+      border: 2px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      margin: auto;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    #Floor4
+    {
+      width:1000px;
+      height:120px;
+      border: 2px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      margin: auto;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    #Floor5
+    {
+      width:1000px;
+      height:120px;
+      border: 2px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      margin: auto;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    body {
+      background-color: white;
+    }
+  </style>
+
+</head>
+<body>
+<!--
+<header>
+    <div id="wrap">
+    <ul>
+        <li><a href="#">ROOM Manage</a>
+
+        </li>
+        <li><a href="#">EMPLOYEE</a>
+
+        </li>
+        <li><a href="#">COMPLAIN</a>
+
+        </li>
+    </ul>
+    </div>
+
+
+    출처: http://helloayge.tistory.com/7 [Hello AYGE]
+</header>
+-->
+<div id="wrap">
+  <ul>
+    <li><a href="#">Room Manage</a>
+      <ul class="home">
+        <li><a href="dashboard_main.html">Booking</a></li>
+        <li><a href="room_current.html">Current</a></li>
+        <li><a href="room_clean.html">Room status</a></li>
+        <li><a href="room_temp.html">Temperatre manage</a></li>
+      </ul>
+    </li>
+    <li><a href="#">Employee</a>
+      <ul class="photo">
+        <li><a href="dashboard_main.html">Current</a></li>
+        <li><a href="dashboard_main.html">Complain</a></li>
+      </ul>
+    </li>
+    <li><a href="eqipment.html">Equipment</a>
+    </li>
+  </ul>
+</div>
+
+<div id="fir">
+  <table id="Floor1" rules="all">
+      <tr class="room">
+          <td>101</td>
+          <td>102</td>
+          <td>103</td>
+          <td>104</td>
+          <td>105</td>
+        </font>
+      </tr>
+      <tr>
+        <td colspan="5" />
+      </tr>
+      <tr class="room">
+        <td>106</td>
+        <td>107</td>
+        <td>108</td>
+        <td>109</td>
+        <td>110</td>
+      </tr>
+  </table>
+
+  <table id="Floor2" rules="all">
+    <tr class="room">
+      <td>201</td>
+      <td>202</td>
+      <td>203</td>
+      <td>204</td>
+      <td>205</td>
+    </tr>
+    <tr>
+      <td colspan="5" />
+    </tr>
+    <tr class="room">
+      <td>206</td>
+      <td>207</td>
+      <td>208</td>
+      <td>209</td>
+      <td>210</td>
+    </tr>
+  </table>
+
+  <table id="Floor3" rules="all">
+    <tr class="room">
+      <td>301</td>
+      <td>302</td>
+      <td>303</td>
+      <td>304</td>
+      <td>305</td>
+    </tr>
+    <tr>
+      <td colspan="5" />
+    </tr>
+    <tr class="room">
+      <td>306</td>
+      <td>307</td>
+      <td>308</td>
+      <td>309</td>
+      <td>310</td>
+    </tr>
+  </table>
+
+  <table id="Floor4" rules="all">
+    <tr class="room">
+      <td>401</td>
+      <td>402</td>
+      <td>403</td>
+      <td>404</td>
+      <td>405</td>
+    </tr>
+    <tr>
+      <td colspan="5" />
+    </tr>
+    <tr class="room">
+      <td>406</td>
+      <td>407</td>
+      <td>408</td>
+      <td>409</td>
+      <td>410</td>
+    </tr>
+  </table>
+
+  <table id="Floor5" rules="all">
+    <tr class="room">
+      <td>501</td>
+      <td>502</td>
+      <td>503</td>
+      <td>504</td>
+      <td>505</td>
+    </tr>
+    <tr>
+      <td colspan="5" />
+    </tr>
+    <tr class="room">
+      <td>506</td>
+      <td>507</td>
+      <td>508</td>
+      <td>509</td>
+      <td>510</td>
+    </tr>
+    </font>
+  </table>
+  </table>
+</div>
+
+<script>
+    require('./renderer.js')
+</script>
+</body>

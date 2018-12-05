@@ -117,5 +117,7 @@ function step4() {
     step4.style.fontSize = "15px";
     step4.style.color = "black";
     step4.style.fontWeight = "bold";
-
+    setTimeout(function () {
+        window.location.href = "dashboard_main.html"
+    }, 3000)
 }
