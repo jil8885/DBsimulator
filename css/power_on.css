@@ -1,0 +1,20 @@
+#question{
+    text-align: center;
+    margin-top: 20%;
+}
+
+#yes{
+    margin-top: 10%;
+    text-align: center;
+    width: 50%;
+    float: left;
+    font-size: 20px;
+}
+
+#no{
+    margin-top: 10%;
+    text-align: center;
+    width: 50%;
+    float: right;
+    font-size: 20px;
+}

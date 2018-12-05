@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulator Starting</title>
+    <link rel="stylesheet" href="../css/power_on.css">
+</head>
+<body>
+    <div id="question">
+        <h2>시뮬레이터가 재시동되었습니다.</h2>
+        <h2>데이터베이스를 초기화하시겠습니까?</h2>
+    </div>
+    <div id="answer">
+        <div id="yes">예</div>
+        <div id="no">아니오</div>
+    </div>
+    <script src="../javascripts/power_on.js"></script>
+    <script>
+        let choice = 1;
+        render();
+        window.addEventListener("keydown", function () {
+            let code = window.event.keyCode;
+            choice = change_selection(code, choice)
+        }, true);
+    </script>
+</body>
+</html>
