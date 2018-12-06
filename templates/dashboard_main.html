@@ -1,235 +1,165 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hello World!</title>
-  <link rel="stylesheet" type="text/css" href="../css/dashboard_main.css">
-  <script src="database.js"></script>
-  <script src="renderer.js"></script>
-  <style type="text/css">
-    #fir{
-      width:100px;
-      height: 100px;
-    }
+  <title>Title</title>
+  <style>
+    #wrap{position:relative; margin:0 auto; width:750px; height:80px;}
+    #wrap ul{margin:0; padding:0; list-style:none;}
+    #wrap li{float:left;}
+    #wrap > ul > li >a{display:inline-block; padding:18px 0 20px 0;; width:250px; background:white; text-align:center; font-weight:bold; font-size:16px; color:black;}
+    #wrap li ul li a{display:inline-block; padding:5px 20px; font-size:12px; color:#fff;}
+    #wrap li ul li a:hover{color:#000}
+    #wrap li ul.home{display:none; position:absolute; left:80px; bottom:-2px; background:#4e84c6;}
+    #wrap li ul.photo{display:none; position:absolute; left:300px; bottom:-2px; background:#7b3e9c;}
+    #wrap li ul.board{display:none; position:absolute; right:0; bottom:-2px; background:#c66a4e;}
+    #wrap > ul> li:hover > ul{display:block;}
 
-    #Floor1
-    {
-      width:1000px;
-      height:120px;
-      border: 2px;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      margin: auto;
-      margin-top: 30px;
-      margin-bottom: 20px;
-      text-align: center;
-
+    h1{
+      font: 40px;
     }
-
-    #Floor2
-    {
-      width:1000px;
-      height:120px;
-      border: 2px;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      margin: auto;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    #Floor3
-    {
-      width:1000px;
-      height:120px;
-      border: 2px;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      margin: auto;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    #Floor4
-    {
-      width:1000px;
-      height:120px;
-      border: 2px;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      margin: auto;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    #Floor5
-    {
-      width:1000px;
-      height:120px;
-      border: 2px;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      margin: auto;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
     body {
-      background-color: white;
+      background:darksalmon;
+      font-size: 62.5%;
+    }
+
+    .container {
+      padding: 2em;
+    }
+
+    /* GENERAL BUTTON STYLING */
+    button,
+    button::after {
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s;
+    }
+
+    button {
+      background: none;
+      border: 3px solid #fff;
+      border-radius: 5px;
+      color: #fff;
+      display: block;
+      font-size: 1.6em;
+      font-weight: bold;
+      margin: 1em auto;
+      padding: 2em 6em;
+      position: relative;
+      text-transform: uppercase;
+    }
+
+    button::before,
+    button::after {
+      background: #fff;
+      content: '';
+      position: absolute;
+      z-index: -1;
+    }
+
+    button:hover {
+      color: darksalmon;
+    }
+
+    /* BUTTON 1 */
+    .btn-1::after {
+      height: 0;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+
+    .btn-1:hover:after {
+      height: 100%;
+    }
+
+    /* BUTTON 2 */
+    .btn-2::after {
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 0;
+    }
+
+    .btn-2:hover:after {
+      width: 100%;
+    }
+
+    /* BUTTON 3 */
+    .btn-3::after {
+      height: 0;
+      left: 50%;
+      top: 50%;
+      width: 0;
+    }
+
+    .btn-3:hover:after {
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+
+    /* BUTTON 4 */
+    .btn-4::before {
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+
+    .btn-4::after {
+      background: darksalmon;
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+
+    .btn-4:hover:after {
+      height: 0;
+      left: 50%;
+      top: 50%;
+      width: 0;
+    }
+
+    /* BUTTON 5 */
+    .btn-5 {
+      overflow: hidden;
+    }
+
+    .btn-5::after {
+      /*background-color: #f00;*/
+      height: 100%;
+      left: -35%;
+      top: 0;
+      transform: skew(50deg);
+      transition-duration: 0.6s;
+      transform-origin: top left;
+      width: 0;
+    }
+
+    .btn-5:hover:after {
+      height: 100%;
+      width: 135%;
     }
   </style>
-
 </head>
 <body>
-<!--
-<header>
-    <div id="wrap">
-    <ul>
-        <li><a href="#">ROOM Manage</a>
-
-        </li>
-        <li><a href="#">EMPLOYEE</a>
-
-        </li>
-        <li><a href="#">COMPLAIN</a>
-
-        </li>
-    </ul>
-    </div>
-
-
-    출처: http://helloayge.tistory.com/7 [Hello AYGE]
-</header>
--->
-<div id="wrap">
-  <ul>
-    <li><a href="#">Room Manage</a>
-      <ul class="home">
-        <li><a href="dashboard_main.html">Booking</a></li>
-        <li><a href="room_current.html">Current</a></li>
-        <li><a href="room_clean.html">Room status</a></li>
-        <li><a href="room_temp.html">Temperatre manage</a></li>
-      </ul>
-    </li>
-    <li><a href="#">Employee</a>
-      <ul class="photo">
-        <li><a href="dashboard_main.html">Current</a></li>
-        <li><a href="dashboard_main.html">Complain</a></li>
-      </ul>
-    </li>
-    <li><a href="eqipment.html">Equipment</a>
-    </li>
-  </ul>
+<h1 style="text-align: center">PostModern Hotel</h1>
+<div class="container">
+  <button class="btn-5">5F</button>
+  <button class="btn-4">4F</button>
+  <button class="btn-3">3F</button>
+  <button class="btn-2">2F</button>
+  <button class="btn-1">1F</button>
 </div>
-
-<div id="fir">
-  <table id="Floor1" rules="all">
-      <tr class="room">
-          <td>101</td>
-          <td>102</td>
-          <td>103</td>
-          <td>104</td>
-          <td>105</td>
-        </font>
-      </tr>
-      <tr>
-        <td colspan="5" />
-      </tr>
-      <tr class="room">
-        <td>106</td>
-        <td>107</td>
-        <td>108</td>
-        <td>109</td>
-        <td>110</td>
-      </tr>
-  </table>
-
-  <table id="Floor2" rules="all">
-    <tr class="room">
-      <td>201</td>
-      <td>202</td>
-      <td>203</td>
-      <td>204</td>
-      <td>205</td>
-    </tr>
-    <tr>
-      <td colspan="5" />
-    </tr>
-    <tr class="room">
-      <td>206</td>
-      <td>207</td>
-      <td>208</td>
-      <td>209</td>
-      <td>210</td>
-    </tr>
-  </table>
-
-  <table id="Floor3" rules="all">
-    <tr class="room">
-      <td>301</td>
-      <td>302</td>
-      <td>303</td>
-      <td>304</td>
-      <td>305</td>
-    </tr>
-    <tr>
-      <td colspan="5" />
-    </tr>
-    <tr class="room">
-      <td>306</td>
-      <td>307</td>
-      <td>308</td>
-      <td>309</td>
-      <td>310</td>
-    </tr>
-  </table>
-
-  <table id="Floor4" rules="all">
-    <tr class="room">
-      <td>401</td>
-      <td>402</td>
-      <td>403</td>
-      <td>404</td>
-      <td>405</td>
-    </tr>
-    <tr>
-      <td colspan="5" />
-    </tr>
-    <tr class="room">
-      <td>406</td>
-      <td>407</td>
-      <td>408</td>
-      <td>409</td>
-      <td>410</td>
-    </tr>
-  </table>
-
-  <table id="Floor5" rules="all">
-    <tr class="room">
-      <td>501</td>
-      <td>502</td>
-      <td>503</td>
-      <td>504</td>
-      <td>505</td>
-    </tr>
-    <tr>
-      <td colspan="5" />
-    </tr>
-    <tr class="room">
-      <td>506</td>
-      <td>507</td>
-      <td>508</td>
-      <td>509</td>
-      <td>510</td>
-    </tr>
-    </font>
-  </table>
-  </table>
-</div>
-
 <script>
-    require('./renderer.js')
+  btn1f = document.getElementsByClassName("btn-1")[0];
+  btn1f.addEventListener("click", function () {
+      window.open("power_on.html", "a", "width=400, height=300, left=100, top=50");
+  })
 </script>
 </body>
+</html>
