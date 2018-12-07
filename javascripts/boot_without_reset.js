@@ -8,10 +8,10 @@ function step1() {
     connection.connect();
     connection.query("select count(room_number) from room_information", function (err, rows, fields) {
         let number = rows[0]["count(room_number)"]
-        if(!err && number === 50){
+        if(!err && number === 150){
             connection.query("select count(id) from employee_information", function (err, rows, fields){
                 number = rows[0]["count(id)"]
-                if(!err && number === 500){
+                if(!err && number === 50){
                     connection.query("select count(id) from guest_information", function (err, rows, fields){
                         number = rows[0]["count(id)"]
                         if(!err && number === 5000){
@@ -70,10 +70,10 @@ function step2() {
         const database = client.db(db);
         let result = database.collection("employee_position");
         result.find().toArray(function (err, docs) {
-            if(docs.length === 500){
+            if(docs.length === 50){
                 result = database.collection("room_temperature");
                 result.find().toArray(function (err, docs) {
-                    if(docs.length === 50){
+                    if(docs.length === 150){
                         step2.innerHTML = "MongoDB 검증 완료";
                         step2.style.color = "grey";
                         step2.style.fontWeight = "normal";
@@ -85,6 +85,7 @@ function step2() {
                     }
                 });
             } else {
+                console.log(docs.length);
                 step2.style.color = "red";
                 step2.innerHTML = "직원 위치 테이블 초기화 실패";
             }

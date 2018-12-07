@@ -53,10 +53,10 @@ def initialize():
     insert = []
     temp_list = np.arange(-10.0, 30.0, 0.1)
     humi_list = np.arange(0.0, 100.0, 0.1)
-    for floor in range(1, 6):
+    for floor in range(1, 16):
         for roomNum in range(1, 11):
             insert.append((int(str(floor) + str(roomNum).zfill(2)), random.randint(1, 6), floor, False, True, 0, 0.0, 0.0))
-            temperature.insert_one({"room": (int(str(floor) + str(roomNum).zfill(2))), "temperature": temp_list[random.randrange(len(temp_list))], "humidity": round(humi_list[random.randrange(len(humi_list))], 1)})
+            temperature.insert_one({"room": (int(str(floor) + str(roomNum).zfill(2))), "temperature": round(temp_list[random.randrange(len(temp_list))], 1), "humidity": round(humi_list[random.randrange(len(humi_list))], 1)})
     sql = "insert into room_information(room_number, type_id, floor, state_in_room, state_cleaned, state_transaction, target_temperature, target_humidity) values "
     for room in insert:
         sql += str(room) + ", "
@@ -83,8 +83,8 @@ def initialize():
     sql = "insert into employee_information (id, name, sex, date_of_birth, date_of_join, date_of_leave, contact_phone, contact_email, address, type_id, position_id, area, salary, language) values "
     id = 0
     insert = []
-    floor_list = list(range(0, 6))
-    while id < 500:
+    floor_list = list(range(0, 16))
+    while id < 50:
         birth = random_date()
         name = random_name()
         contact = random_contact()
@@ -108,7 +108,6 @@ def initialize():
         sql += str(customer) + ", "
     cursor.execute(sql[:-2])
     connect.commit()
-
     connect.close()
 
 

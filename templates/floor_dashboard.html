@@ -19,7 +19,7 @@
 <body>
 
 <div id="tb1">
-    <table id="Floor5" rules="all" width="500px" height="400px">
+    <table id="Floor5" rules="all" width="500px" height="420px">
         <tr>
             <td class="room">501</td>
             <td class="room">502</td>
@@ -40,6 +40,9 @@
         </tr>
     </table>
 </div>
+<div align="center" id="bottom">
+    <button id="close">닫기</button>
+</div>
 <script>
     function pad(n, width) {
         n = n + '';
@@ -47,7 +50,12 @@
     }
     let rooms = document.getElementsByClassName("room");
     for(let i = 0; i < rooms.length; i++){
-        rooms[i].innerHTML = String(floor) + String(pad(i, 2));
+        rooms[i].innerHTML = String(floor) + String(pad(i + 1, 2));
     }
+    let close = document.getElementById("close");
+    close.addEventListener("click", function () {
+        window.close();
+    })
 </script>
+<script src="../javascripts/floor_dashboard.js"></script>
 </body>

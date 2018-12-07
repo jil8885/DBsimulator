@@ -1,29 +1,29 @@
-function getQueryStringObject() {
-    let a = window.location.search.substr(1).split('&');
-    if (a === "") return {};
-    let b = {};
-    for (let i = 0; i < a.length; ++i) {
-        let p = a[i].split('=', 2);
-        if (p.length == 1)
-            b[p[0]] = "";
-        else
-            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
-    }
-    return b;
-}
-
-function draw() {
-    let x = Math.floor(Math.random() * 400) + 1;
-    let canvas = document.getElementById("canvas");
-    if (canvas.getContext) {
-        canvas.style.left = x + "px";
-        canvas.style.position = "absolute";
-        setTimeout(function () {
-            draw();
-        }, 1500);
-    }
-}
-
+const mariadb = require("mysql");
+const connection = mariadb.createConnection({host: 'localhost', user: 'root', password: 'a981212', database: 'hotel'});
+connection.connect();
 window.onload = function () {
-    draw();
+    execute(floor)
+};
+
+function execute(floor) {
+    check_reservation(floor);
+    setTimeout(function () {
+        execute(floor);
+    }, 500);
+}
+
+function check_reservation(floor) {
+    connection.query("select state_transaction, state_in_room from room_information where floor=" + floor, function (err, rows, fields) {
+        let rooms = document.getElementsByClassName("room");
+        for(let i = 0; i < rooms.length; i++){
+            if(rows[i]["state_transaction"] === 0)
+                rooms[i].style.backgroundColor = "white";
+            else if(rows[i]["state_transaction"] === 1){
+                if(rows[i]["state_in_room"] === 0)
+                    rooms[i].style.backgroundColor = "pink";
+                else if(rows[i]["state_in_room"] === 1)
+                    rooms[i].style.backgroundColor = "red";
+            }
+        }
+    })
 }

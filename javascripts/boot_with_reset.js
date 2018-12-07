@@ -28,10 +28,10 @@ function step2() {
     connection.connect();
     connection.query("select count(room_number) from room_information", function (err, rows, fields) {
         let number = rows[0]["count(room_number)"]
-        if(!err && number === 50){
+        if(!err && number === 150){
             connection.query("select count(id) from employee_information", function (err, rows, fields){
                 number = rows[0]["count(id)"]
-                if(!err && number === 500){
+                if(!err && number === 50){
                     connection.query("select count(id) from guest_information", function (err, rows, fields){
                         number = rows[0]["count(id)"]
                         if(!err && number === 5000){
@@ -50,7 +50,7 @@ function step2() {
                             return;
                         }
                     })
-                } else if (number !== 500) {
+                } else if (number !== 50) {
                     step2.style.color = "red";
                     step2.innerHTML = "직원 수 불일치";
                     return;
@@ -60,7 +60,7 @@ function step2() {
                     return;
                 }
             })
-        } else if (number !== 50) {
+        } else if (number !== 150) {
             step2.style.color = "red";
             step2.innerHTML = "방 갯수 불일치";
             return;
@@ -90,10 +90,10 @@ function step3() {
         const database = client.db(db);
         let result = database.collection("employee_position");
         result.find().toArray(function (err, docs) {
-            if(docs.length === 500){
+            if(docs.length === 50){
                 result = database.collection("room_temperature");
                 result.find().toArray(function (err, docs) {
-                    if(docs.length === 50){
+                    if(docs.length === 150){
                         step3.innerHTML = "MongoDB 검증 완료";
                         step3.style.color = "grey";
                         step3.style.fontWeight = "normal";

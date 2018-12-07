@@ -5,37 +5,144 @@
   <title>Title</title>
   <link href="../css/dashboard_main.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
+  <script src="../javascripts/dashboard_main.js"></script>
 </head>
 <body>
 <h1 style="text-align: center; margin-top:5%; font-family: Bungee; font-size: 50px; color: white">PostModern Hotel</h1>
 <div style="margin-top: 5%">
   <div class="container" style="float: left; width: 33%;">
-    <button class="btn-5 floor">5F</button>
-    <button class="btn-4 floor">4F</button>
-    <button class="btn-3 floor">3F</button>
-    <button class="btn-2 floor">2F</button>
-    <button class="btn-1 floor">1F</button>
+    <button class="btn-1 floor">
+      <div class="tooltip">
+        5F
+        <span class="tooltiptext">
+          name:yeonsu<br>name:jungin
+        </span>
+      </div>
+    </button>
+    <button class="btn-4 floor">
+      <div class="tooltip">
+        4F
+        <span class="tooltiptext">
+          name:yeonsu<br>name:jungin
+        </span>
+      </div>
+    </button>
+    <button class="btn-3 floor">
+      <div class="tooltip">
+        3F
+        <span class="tooltiptext">
+          name:yeonsu<br>name:jungin
+        </span>
+      </div>
+    </button>
+    <button class="btn-2 floor">
+      <div class="tooltip">
+        2F
+        <span class="tooltiptext">
+          name:yeonsu<br>name:jungin
+        </span>
+      </div>
+    </button>
+    <button class="btn-1 floor">
+      <div class="tooltip">
+        1F
+        <span class="tooltiptext">
+          name:yeonsu<br>name:jungin
+        </span>
+      </div>
+    </button>
   </div>
   <div class="container" style="float: left; width: 27%;">
-    <button class="btn-5 floor">10F</button>
-    <button class="btn-4 floor">9F</button>
-    <button class="btn-3 floor">8F</button>
-    <button class="btn-2 floor">7F</button>
-    <button class="btn-1 floor">6F</button>
+    <button class="btn-1 floor">
+      <div class="tooltip">
+        10F
+        <span class="tooltiptext">
+          name:yeonsu<br>name:jungin
+        </span>
+      </div>
+    </button>
+    <button class="btn-4 floor">
+      <div class="tooltip">
+        9F
+        <span class="tooltiptext">
+          name:yeonsu<br>name:jungin
+        </span>
+      </div>
+    </button>
+    <button class="btn-3 floor">
+      <div class="tooltip">
+        8F
+        <span class="tooltiptext">
+          name:yeonsu<br>name:jungin
+        </span>
+      </div>
+    </button>
+    <button class="btn-2 floor">
+      <div class="tooltip">
+        7F
+        <span class="tooltiptext">
+          name:yeonsu<br>name:jungin
+        </span>
+      </div>
+    </button>
+    <button class="btn-1 floor">
+      <div class="tooltip">
+        6F
+        <span class="tooltiptext">
+          name:yeonsu<br>name:jungin<br>name:jeongin
+        </span>
+      </div>
+    </button>
   </div>
   <div class="container" style="float: left; width: 27%;">
-    <button class="btn-5 floor">15F</button>
-    <button class="btn-4 floor">14F</button>
-    <button class="btn-3 floor">13F</button>
-    <button class="btn-2 floor">12F</button>
-    <button class="btn-1 floor">11F</button>
+    <button class="btn-1 floor">
+      <div class="tooltip">
+        15F
+        <span class="tooltiptext">
+          name:yeonsu<br>name:jungin
+        </span>
+      </div>
+    </button>
+    <button class="btn-4 floor">
+      <div class="tooltip">
+        14F
+        <span class="tooltiptext">
+          name:yeonsu<br>name:jungin
+        </span>
+      </div>
+    </button>
+    <button class="btn-3 floor">
+      <div class="tooltip">
+        13F
+        <span class="tooltiptext">
+          name:yeonsu<br>name:jungin
+        </span>
+      </div>
+    </button>
+    <button class="btn-2 floor">
+      <div class="tooltip">
+        12F
+        <span class="tooltiptext">
+          name:yeonsu<br>name:jungin
+        </span>
+      </div>
+    </button>
+    <button class="btn-1 floor">
+      <div class="tooltip">
+        11F
+        <span class="tooltiptext">
+          name:yeonsu<br>name:jungin
+        </span>
+      </div>
+    </button>
   </div>
 </div>
 <script>
+    floors = document.getElementsByClassName("tooltip");
     buttons = document.getElementsByClassName("floor");
-    for(let i = 0; i < buttons.length; i++){
+    for(let i = 0; i < floors.length; i++){
         buttons[i].addEventListener('click', function () {
-            let floor = parseInt(buttons[i].innerHTML.substring(0, buttons[i].innerHTML.length - 1));
+            let floor = parseInt(floors[i].innerHTML.substring(0, floors[i].innerHTML.length - 1));
             window.open("floor_dashboard.html?floor=" + floor, "a", "width=540, height=450, left=450, top=270 scrollbars=no");
         })
     }

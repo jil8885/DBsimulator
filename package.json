@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "main": "javascripts/main.js",
   "dependencies": {
+    "async": "^2.6.1",
     "mongodb": "^3.1.10",
     "mysql": "^2.16.0",
     "python-shell": "^1.0.6"
