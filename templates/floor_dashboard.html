@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/floor_dashboard.css">
+    <style>
+        #canvas{
+            border: 1px solid black ;
+            z-index: 1;
+
+        }
+    </style>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const floor = urlParams.get('floor');
+    </script>
+</head>
+<body>
+
+<div id="tb1">
+    <table id="Floor5" rules="all" width="500px" height="400px">
+        <tr>
+            <td class="room">501</td>
+            <td class="room">502</td>
+            <td class="room">503</td>
+            <td class="room">504</td>
+            <td class="room">505</td>
+        </tr>
+        <tr>
+            <td colspan="5">
+            </td>
+        </tr>
+        <tr>
+            <td class="room">506</td>
+            <td class="room">507</td>
+            <td class="room">508</td>
+            <td class="room">509</td>
+            <td class="room">510</td>
+        </tr>
+    </table>
+</div>
+<script>
+    function pad(n, width) {
+        n = n + '';
+        return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
+    }
+    let rooms = document.getElementsByClassName("room");
+    for(let i = 0; i < rooms.length; i++){
+        rooms[i].innerHTML = String(floor) + String(pad(i, 2));
+    }
+</script>
+</body>

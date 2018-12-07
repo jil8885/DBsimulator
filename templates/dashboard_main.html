@@ -3,163 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
-  <style>
-    #wrap{position:relative; margin:0 auto; width:750px; height:80px;}
-    #wrap ul{margin:0; padding:0; list-style:none;}
-    #wrap li{float:left;}
-    #wrap > ul > li >a{display:inline-block; padding:18px 0 20px 0;; width:250px; background:white; text-align:center; font-weight:bold; font-size:16px; color:black;}
-    #wrap li ul li a{display:inline-block; padding:5px 20px; font-size:12px; color:#fff;}
-    #wrap li ul li a:hover{color:#000}
-    #wrap li ul.home{display:none; position:absolute; left:80px; bottom:-2px; background:#4e84c6;}
-    #wrap li ul.photo{display:none; position:absolute; left:300px; bottom:-2px; background:#7b3e9c;}
-    #wrap li ul.board{display:none; position:absolute; right:0; bottom:-2px; background:#c66a4e;}
-    #wrap > ul> li:hover > ul{display:block;}
-
-    h1{
-      font: 40px;
-    }
-    body {
-      background:darksalmon;
-      font-size: 62.5%;
-    }
-
-    .container {
-      padding: 2em;
-    }
-
-    /* GENERAL BUTTON STYLING */
-    button,
-    button::after {
-      -webkit-transition: all 0.3s;
-      -moz-transition: all 0.3s;
-      -o-transition: all 0.3s;
-      transition: all 0.3s;
-    }
-
-    button {
-      background: none;
-      border: 3px solid #fff;
-      border-radius: 5px;
-      color: #fff;
-      display: block;
-      font-size: 1.6em;
-      font-weight: bold;
-      margin: 1em auto;
-      padding: 2em 6em;
-      position: relative;
-      text-transform: uppercase;
-    }
-
-    button::before,
-    button::after {
-      background: #fff;
-      content: '';
-      position: absolute;
-      z-index: -1;
-    }
-
-    button:hover {
-      color: darksalmon;
-    }
-
-    /* BUTTON 1 */
-    .btn-1::after {
-      height: 0;
-      left: 0;
-      top: 0;
-      width: 100%;
-    }
-
-    .btn-1:hover:after {
-      height: 100%;
-    }
-
-    /* BUTTON 2 */
-    .btn-2::after {
-      height: 100%;
-      left: 0;
-      top: 0;
-      width: 0;
-    }
-
-    .btn-2:hover:after {
-      width: 100%;
-    }
-
-    /* BUTTON 3 */
-    .btn-3::after {
-      height: 0;
-      left: 50%;
-      top: 50%;
-      width: 0;
-    }
-
-    .btn-3:hover:after {
-      height: 100%;
-      left: 0;
-      top: 0;
-      width: 100%;
-    }
-
-    /* BUTTON 4 */
-    .btn-4::before {
-      height: 100%;
-      left: 0;
-      top: 0;
-      width: 100%;
-    }
-
-    .btn-4::after {
-      background: darksalmon;
-      height: 100%;
-      left: 0;
-      top: 0;
-      width: 100%;
-    }
-
-    .btn-4:hover:after {
-      height: 0;
-      left: 50%;
-      top: 50%;
-      width: 0;
-    }
-
-    /* BUTTON 5 */
-    .btn-5 {
-      overflow: hidden;
-    }
-
-    .btn-5::after {
-      /*background-color: #f00;*/
-      height: 100%;
-      left: -35%;
-      top: 0;
-      transform: skew(50deg);
-      transition-duration: 0.6s;
-      transform-origin: top left;
-      width: 0;
-    }
-
-    .btn-5:hover:after {
-      height: 100%;
-      width: 135%;
-    }
-  </style>
+  <link href="../css/dashboard_main.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
 </head>
 <body>
-<h1 style="text-align: center">PostModern Hotel</h1>
-<div class="container">
-  <button class="btn-5">5F</button>
-  <button class="btn-4">4F</button>
-  <button class="btn-3">3F</button>
-  <button class="btn-2">2F</button>
-  <button class="btn-1">1F</button>
+<h1 style="text-align: center; margin-top:5%; font-family: Bungee; font-size: 50px; color: white">PostModern Hotel</h1>
+<div style="margin-top: 5%">
+  <div class="container" style="float: left; width: 33%;">
+    <button class="btn-5 floor">5F</button>
+    <button class="btn-4 floor">4F</button>
+    <button class="btn-3 floor">3F</button>
+    <button class="btn-2 floor">2F</button>
+    <button class="btn-1 floor">1F</button>
+  </div>
+  <div class="container" style="float: left; width: 27%;">
+    <button class="btn-5 floor">10F</button>
+    <button class="btn-4 floor">9F</button>
+    <button class="btn-3 floor">8F</button>
+    <button class="btn-2 floor">7F</button>
+    <button class="btn-1 floor">6F</button>
+  </div>
+  <div class="container" style="float: left; width: 27%;">
+    <button class="btn-5 floor">15F</button>
+    <button class="btn-4 floor">14F</button>
+    <button class="btn-3 floor">13F</button>
+    <button class="btn-2 floor">12F</button>
+    <button class="btn-1 floor">11F</button>
+  </div>
 </div>
 <script>
-  btn1f = document.getElementsByClassName("btn-1")[0];
-  btn1f.addEventListener("click", function () {
-      window.open("power_on.html", "a", "width=400, height=300, left=100, top=50");
-  })
+    buttons = document.getElementsByClassName("floor");
+    for(let i = 0; i < buttons.length; i++){
+        buttons[i].addEventListener('click', function () {
+            let floor = parseInt(buttons[i].innerHTML.substring(0, buttons[i].innerHTML.length - 1));
+            window.open("floor_dashboard.html?floor=" + floor, "a", "width=540, height=450, left=450, top=270 scrollbars=no");
+        })
+    }
 </script>
 </body>
 </html>
