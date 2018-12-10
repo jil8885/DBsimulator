@@ -55,7 +55,7 @@ def initialize():
     humi_list = np.arange(0.0, 100.0, 0.1)
     for floor in range(1, 16):
         for roomNum in range(1, 11):
-            insert.append((int(str(floor) + str(roomNum).zfill(2)), random.randint(1, 6), floor, False, True, 0, 0.0, 0.0))
+            insert.append((int(str(floor) + str(roomNum).zfill(2)), random.randint(0, 4), floor, False, True, 0, 0.0, 0.0))
             temperature.insert_one({"room": (int(str(floor) + str(roomNum).zfill(2))), "temperature": round(temp_list[random.randrange(len(temp_list))], 1), "humidity": round(humi_list[random.randrange(len(humi_list))], 1)})
     sql = "insert into room_information(room_number, type_id, floor, state_in_room, state_cleaned, state_transaction, target_temperature, target_humidity) values "
     for room in insert:
