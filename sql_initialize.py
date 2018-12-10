@@ -26,10 +26,10 @@ def initialize():
     create_table.append("create table room_type (id int(11) primary key, name varchar(11), capacity int(11), smoking boolean, price int)")
     create_table.append("create table complain (id int(11) primary key, manager_id int, guest_id int, type_id int, contents varchar(20), completed boolean)")
     create_table.append("create table complain_type (id int(11) primary key, name varchar(20))")
-    create_table.append("create table employee_information (id int(11) primary key, name varchar(20), sex varchar(20), date_of_birth date, date_of_join date, date_of_leave date, contact_phone varchar(20), contact_email varchar(40), address varchar(20), type_id int, position_id int, area varchar(20), salary int, language varchar(20))")
+    create_table.append("create table employee_information (id int(11) primary key auto_increment, name varchar(20), sex varchar(20), date_of_birth date, date_of_join date, date_of_leave date, contact_phone varchar(20), contact_email varchar(40), address varchar(20), type_id int, position_id int, area varchar(20), salary int, language varchar(20))")
     create_table.append("create table employee_type (id int primary key, name varchar(20))")
     # create_table.append("create table employee_position (id int primary key, name varchar(20))")
-    create_table.append("create table guest_information (id int primary key,  name varchar(20),  sex varchar(20),  date_of_birth date,  contact_phone varchar(20),  contact_email varchar(40),  address varchar(20),  country varchar(20),  language varchar(20),  belong varchar(20),  type_id int,  smoking boolean,  memo varchar(20))")
+    create_table.append("create table guest_information (id int primary key auto_increment,  name varchar(20),  sex varchar(20),  date_of_birth date,  contact_phone varchar(20),  contact_email varchar(40),  address varchar(20),  country varchar(20),  language varchar(20),  belong varchar(20),  type_id int,  smoking boolean,  memo varchar(20))")
     create_table.append("create table guest_type (id int primary key,  name varchar(20))")
     create_table.append("create table membership (guest_id int,  type_id int,  start date,  end date,  point int)")
     create_table.append("create table membership_type (id int primary key,  name varchar(20))")
@@ -63,7 +63,7 @@ def initialize():
     cursor.execute(sql[:-2])
     connect.commit()
 
-    sql = "insert into guest_information (id, name, sex, date_of_birth, contact_phone, contact_email, address, country, language, belong,  type_id, smoking, memo) values "
+    sql = "insert into guest_information (name, sex, date_of_birth, contact_phone, contact_email, address, country, language, belong,  type_id, smoking, memo) values "
     id = 0
     insert = []
     while id < 5000:
@@ -73,14 +73,14 @@ def initialize():
         sex = random.sample(["Male", "Female"], 1)[0]
         country = random.sample(["USA", "Germany", "France", "Korea", "China", "Japan", "Spain", "Saudi", "Russia", "Space"], 1)[0]
         language = random_language()
-        insert.append((id + 1, name, sex, birth.strftime("%Y-%m-%d"), contact, random_email(name), "Null", country, language, "Null",  0, random.sample([True, False], 1)[0], "Customer" + str(id)))
+        insert.append((name, sex, birth.strftime("%Y-%m-%d"), contact, random_email(name), "Null", country, language, "Null",  0, random.sample([True, False], 1)[0], "Customer" + str(id)))
         id += 1
     for customer in insert:
         sql += str(customer) + ", "
     cursor.execute(sql[:-2])
     connect.commit()
 
-    sql = "insert into employee_information (id, name, sex, date_of_birth, date_of_join, date_of_leave, contact_phone, contact_email, address, type_id, position_id, area, salary, language) values "
+    sql = "insert into employee_information (name, sex, date_of_birth, date_of_join, date_of_leave, contact_phone, contact_email, address, type_id, position_id, area, salary, language) values "
     id = 0
     insert = []
     floor_list = list(range(0, 16))
@@ -101,7 +101,7 @@ def initialize():
         type = random.randrange(1, 4)
         level = random.randrange(1, 10)
         salary = random_salary(type, level)
-        insert.append((id + 1, name, sex, birth.strftime("%Y-%m-%d"), start, end, contact, random_email_employee(name), "Null", type, level, str(random.randrange(5) + 1) + "F", salary, language))
+        insert.append((name, sex, birth.strftime("%Y-%m-%d"), start, end, contact, random_email_employee(name), "Null", type, level, str(random.randrange(5) + 1) + "F", salary, language))
         positiondb.insert_one({"id": id + 1, "position" : random.sample(floor_list,1)[0]})
         id += 1
     for customer in insert:
