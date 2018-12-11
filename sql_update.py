@@ -13,7 +13,7 @@ def execute():
     db = client.hotel
     temperature = db.room_temperature
     positiondb = db.employee_position
-    cursor.execute("select room_number, state_in_room from room_information where state_transaction = 1")
+    cursor.execute("select room_number, state_in_room from room_information where state_transaction = 2")
     rooms = cursor.fetchall()
     for room in random.sample(rooms, len(rooms) // 3):
         if room[1] == 1:
