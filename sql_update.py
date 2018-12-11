@@ -30,7 +30,7 @@ def execute():
             var_temp = random.sample(var, 1)[0]
             var_humi = random.sample(var, 1)[0]
             temperature.update_one({"room" : room_num}, {"$set" :{"temperature" : room_temp + var_temp, "humidity" : room_humi + var_humi}} ,True)
-    for x in range(500):
+    for x in range(50):
         positiondb.update_one({"id" : x}, {"$set": {"position": random.randint(0, 15)}}, True)
 execute()
     
